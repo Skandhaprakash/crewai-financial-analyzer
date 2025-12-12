@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrewAI Financial Analyzer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>📊 Financial Analyzer</h1>
+                <button id="themeToggle" class="theme-btn">🌙</button>
+            </div>
+        </header>
+
+        <section class="input-section">
+            <div class="input-group">
+                <input type="text" id="symbol" placeholder="Stock Symbol (e.g., INFY)" value="INFY">
+                <select id="market">
+                    <option value="NSE">NSE</option>
+                    <option value="BSE">BSE</option>
+                    <option value="NASDAQ">NASDAQ</option>
+                    <option value="NYSE">NYSE</option>
+                </select>
+                <button id="analyzeBtn" class="btn-primary">Analyze ▶</button>
+            </div>
+            <div id="loadingSpinner" class="spinner hidden"></div>
+        </section>
+
+        <section id="resultsSection" class="results-section hidden">
+            <!-- Metrics Table -->
+            <h2>📈 Financial Metrics (5-Year)</h2>
+            <div class="table-wrapper">
+                <table id="metricsTable" class="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Revenue (Cr)</th>
+                            <th>EBITDA (Cr)</th>
+                            <th>Op. Margin %</th>
+                            <th>ROE %</th>
+                            <th>D/E Ratio</th>
+                            <th>WC Days</th>
+                            <th>Cash Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Revenue & EBITDA</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Operating Margin</h3>
+                    <canvas id="marginChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Return on Equity</h3>
+                    <canvas id="roeChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Debt-to-Equity</h3>
+                    <canvas id="debtChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Working Capital Days</h3>
+                    <canvas id="wcChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Cash Ratio</h3>
+                    <canvas id="cashChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Anomalies -->
+            <h2>⚠️ Anomalies Detected</h2>
+            <div id="anomaliesContainer" class="anomalies-grid"></div>
+
+            <!-- Analyst Notes -->
+            <h2>📋 Analyst Report</h2>
+            <div id="analystNotes" class="analyst-box"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
